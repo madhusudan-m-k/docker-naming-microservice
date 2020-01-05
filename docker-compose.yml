@@ -1,0 +1,55 @@
+version: "3.6"
+
+services:
+  currency-conversion-service:
+    build:
+      context: ccy-conversion-service
+      dockerfile: Dockerfile
+    env_file:
+      - .env
+    ports:
+      - "8080:${CCY_CONVERSION_SERVER_PORT}"
+    environment:
+      RDS_HOST_NAME: currency-conversion-db
+    container_name: currency-conversion-services-cn
+    networks:
+      - currency-bridge
+    depends_on:
+      - currency-conversion-db
+
+  currency-conversion-db:
+    build:
+      context: ccy-conversion-service
+      dockerfile: /db/Dockerfile
+    env_file:
+      - .env
+    ports:
+      - "3307:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+    container_name: ccy-conversion-data-cn
+    networks:
+      - currency-bridge
+    volumes:
+      - ccy-conversion-mysql-db-volume:/var/lib/mysql
+
+  currency-exchange-service:
+    build:
+      context: ccy-exchange-service
+      dockerfile: Dockerfile
+    env_file:
+      - .env
+    ports:
+      - "9090:${CCY_EXCHANGE_SERVER_PORT}"
+    container_name: currency-exchange-services-cn
+    networks:
+      - currency-bridge
+
+networks:
+  currency-bridge:
+
+volumes:
+  ccy-conversion-mysql-db-volume:
