@@ -54,6 +54,8 @@ e.g. docker container stop afe34d
 stop multiple containers
 e.g. docker container stop 23xfeg
 
+docker stop $(docker ps -a -q)
+
 ```
 
 #Search for images on Docker hub
@@ -186,6 +188,16 @@ docker container exec naught_knuth ls /tmp
 docker exec -it <container_name> bash
 e.g. docker exec -it mysql-db-container bash
 docker exec -it microservice-container bash
+```
+
+#remove container
+
+```
+docker container rm <container_id/name>
+
+--Remove all containers
+docker rm $(docker ps -a -q)
+
 ```
 
 #remove container after exiting and login into interactive SQL shell for mysql
@@ -335,64 +347,64 @@ docker volume rm mysql-database-volume
 ###spring JWT security
 www.springboottutorial.com/spring-boot-react-full-stack-with-spring-security-basic-and-jwt-authentication
 
-##Docker Compose
+## Docker Compose
 
-####componse and start docker containers
+#### componse and start docker containers
 
 ```
 
 docker-compose up
 ```
 
-###run in detached mode
+### run in detached mode
 
 ```
 
 docker-compose up -d
 ```
 
-###just build the docker compose file.
+### just build the docker compose file.
 
 ```
 
 docker-compose -f "docker-compose.yml" up -d --build
 ```
 
-###tear down services and resource started with docker-compose up
+### tear down services and resource started with docker-compose up
 
 ```
 
 docker-compose down
 ```
 
-###docker compose config will show the docker compose file used to start the services
+### docker compose config will show the docker compose file used to start the services
 
 ```
 
 docker-compose config
 ```
 
-###show all the container and images managed by docker-compose
+### show all the container and images managed by docker-compose
 
 ```
 docker-compose images
 ```
 
-###Show all the running container started by docker compose
+### Show all the running container started by docker compose
 
 ```
 
 docker-compose ps
 ```
 
-###show all the processes running within each container started by docker-compose
+### show all the processes running within each container started by docker-compose
 
 ```
 
 docker-compose top
 ```
 
-###pause and unpause containers
+### pause and unpause containers
 
 ```
 
@@ -400,28 +412,28 @@ docker-compose pause
 docker-compose unpause
 ```
 
-###stop all containers started by docker-compose
+### stop all containers started by docker-compose
 
 ```
 
 docker-compose stop
 ```
 
-###kill all containers started by docker-compose
+### kill all containers started by docker-compose
 
 ```
 
 docker-compose kill
 ```
 
-###prune all container
+### prune all container
 
 ```
 
 docker-compose rm
 ```
 
-###docker build within docker compose (where ever build element is pointing to Docker file)
+### docker build within docker compose (where ever build element is pointing to Docker file)
 
 ```
 
@@ -433,4 +445,12 @@ docker-compose build
 ```
 
 docker-compose run
+```
+
+### Docker compone build and force recreate all images
+
+```
+
+docker-compose up -d --build --force-recreate
+
 ```

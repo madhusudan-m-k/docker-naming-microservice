@@ -1,0 +1,46 @@
+spring:
+  #profiles: cloud
+  application:
+    name: currency-conversion-service
+
+server:
+  port: 8080
+
+eureka: 
+  instance: 
+    hostName: localhost
+    ipAddress: 127.0.0.1
+    leaseExpirationDurationInSeconds: 5
+    leaseRenewalIntervalInSeconds: 5
+    nonSecurePort: 8761
+    nonSecurePortEnabled: true
+    preferIpAddress: true    
+    
+  client:
+    eurekaServerDNSName: localhost
+    eurekaServerPort: 8761
+    eurekaServerURLContext: eureka
+    fetchRegistry: true
+    registerWithEureka: true
+    registryFetchIntervalSeconds: 5
+    useDnsForFetchingServiceUrls: false
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka
+
+feign:
+    client:
+        config:
+            default:
+                connectTimeout: 50000
+                loggerLevel: basic
+                readTimeout: 50000
+logging:
+    level:
+        com:
+            currencyexchange:
+                docker: DEBUG
+ribbon:
+    eagerLoad:
+        enabled: true
+    eureka:
+        enabled: true

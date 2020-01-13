@@ -1,0 +1,35 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Debug (Launch) - Current File",
+            "request": "launch",
+            "mainClass": "${file}"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-CurrencyConversionApplication<ccy-conversion-microservice>",
+            "request": "launch",
+            "mainClass": "com.microservice.docker.CurrencyConversionApplication",
+            "projectName": "ccy-conversion-microservice"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-CurrencyExchangeApplication<ccy-exchange-microservice>",
+            "request": "launch",
+            "mainClass": "com.currencyexchange.docker.CurrencyExchangeApplication",
+            "projectName": "ccy-exchange-microservice"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-CurrencyServiceNamingServer<ccy-naming-service>",
+            "request": "launch",
+            "mainClass": "com.namingserver.docker.microservicenamingserver.CurrencyServiceNamingServer",
+            "projectName": "ccy-naming-service"
+        }
+    ]
+}
