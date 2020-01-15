@@ -1,31 +1,29 @@
 package com.currencyexchange.docker.controller;
 
 import java.math.BigDecimal;
-import java.util.List;
 
 import com.currencyexchange.docker.domain.CurrencyExchange;
 import com.currencyexchange.docker.service.CurrencyExchangeService;
-import com.netflix.discovery.EurekaClient;
-import com.netflix.discovery.shared.Application;
-import com.netflix.discovery.shared.Applications;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-// @RequestMapping("/currencyexchange")
+@RequestMapping("/currencyexchange")
 public class CurrencyExchangeController {
 
     @Autowired
     private CurrencyExchangeService ccyExchangeService;
 
-    @Autowired
-    private EurekaClient eurekaClient;
+    /*
+     * @Autowired private EurekaClient eurekaClient;
+     */
 
     public CurrencyExchangeController() {
     }
@@ -41,12 +39,14 @@ public class CurrencyExchangeController {
     public @ResponseBody ResponseEntity<CurrencyExchange> exchangeCurrency(@PathVariable("sourceCcy") String sourceCcy,
             @PathVariable("targetCcy") String targetCcy, @PathVariable("sourceCcyAmount") BigDecimal sourceCcyAmount) {
 
-        Applications apps = eurekaClient.getApplications();
-        List<String> discoveryServiceUrls = eurekaClient.getDiscoveryServiceUrls("default");
-        List<Application> appList = apps.getRegisteredApplications();
-
-        appList.forEach((e) -> System.out.println(e.getName()));
-        System.out.println("Discovery client URLs " + discoveryServiceUrls);
+        /*
+         * Applications apps = eurekaClient.getApplications(); List<String>
+         * discoveryServiceUrls = eurekaClient.getDiscoveryServiceUrls("default");
+         * List<Application> appList = apps.getRegisteredApplications();
+         * 
+         * appList.forEach((e) -> System.out.println(e.getName()));
+         * System.out.println("Discovery client URLs " + discoveryServiceUrls);
+         */
 
         CurrencyExchange currencyExchange = ccyExchangeService.exchange(sourceCcy, targetCcy, sourceCcyAmount);
 

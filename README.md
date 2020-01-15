@@ -2,6 +2,16 @@
 
 Docker micro service examples
 
+#### Start consul service
+
+```
+On windows
+E:\Software\Consul-1-6-2>consul agent -server -bootstrap-expect=1 -data-dir=consul-data -ui -bind=127.0.0.1
+
+Run on specific port
+E:\Software\Consul-1-6-2>consul agent -server -bootstrap-expect=1 -http-port=8761 -data-dir=consul-data -ui -bind=127.0.0.1
+```
+
 #### Build Currency conversion container (exchange rates for different currencies)
 
 ```

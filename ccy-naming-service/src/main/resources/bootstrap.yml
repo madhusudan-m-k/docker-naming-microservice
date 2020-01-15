@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: ccy-naming-service
+  cloud:
+    consul:
+      host: 127.0.0.1
+      port: 8761
+      config:
+        format: YAML
+      discovery:
+        hostname: localhost
+        register-health-check: false
+
+    loadbalancer:
+      ribbon:
+        enabled: false
+
+server:
+  port: 8761

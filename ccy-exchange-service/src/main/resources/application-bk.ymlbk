@@ -14,9 +14,11 @@ eureka:
     leaseRenewalIntervalInSeconds: 30
     nonSecurePort: ${NAMING_SERVER_PORT:8761}
     nonSecurePortEnabled: true
-    preferIpAddress: true    
+    preferIpAddress: true
+    virtualHostName: ${NAMING_SERVER_HOST:localhost}
     
   client:
+    region: default
     eurekaServerDNSName: ${NAMING_SERVER_HOST:localhost}
     eurekaServerPort: ${NAMING_SERVER_PORT:8761}
     eurekaServerURLContext: eureka
@@ -45,6 +47,6 @@ logging:
               
 ribbon:
     eagerLoad:
-        enabled: true
+        enabled: false
     eureka:
-        enabled: true
+        enabled: false
