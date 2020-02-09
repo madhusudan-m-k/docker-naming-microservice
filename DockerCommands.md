@@ -454,3 +454,12 @@ docker-compose run
 docker-compose up -d --build --force-recreate
 
 ```
+
+### Scaling the number of containers using docker compose
+
+```
+
+docker-compose scale <service-name>=2
+
+e.g. docker-compose scale currency-conversion-service=2
+```

@@ -14,6 +14,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public interface CurrencyConversionServiceProxy {
 
     @GetMapping(value = "/conversionservice/conversionrate/from/{sourceCurrency}/to/{targetCurrency}", produces = MediaType.APPLICATION_JSON_VALUE)
+    // @GetMapping(value =
+    // "/conversionrate/from/{sourceCurrency}/to/{targetCurrency}", produces =
+    // MediaType.APPLICATION_JSON_VALUE)
     public @ResponseBody ResponseEntity<CurrencyExchange> getConversionRate(
             @PathVariable("sourceCurrency") String sourceCurrency,
             @PathVariable("targetCurrency") String targetCurrency);

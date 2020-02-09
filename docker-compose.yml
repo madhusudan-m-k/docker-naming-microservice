@@ -24,11 +24,11 @@ services:
       dockerfile: Dockerfile
     env_file:
       - .env
-    #ports:
-    #  - "8080:${CCY_CONVERSION_SERVER_PORT}"
+    ports:
+      - "8080:${CCY_CONVERSION_SERVER_PORT}"
     environment:
       RDS_HOST_NAME: currency-conversion-db
-    #container_name: currency-conversion-service-cn
+    container_name: currency-conversion-service-cn
     networks:
       - currency-bridge
     depends_on:
@@ -48,7 +48,7 @@ services:
       MYSQL_USER: ${MYSQL_USER}
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
       MYSQL_DATABASE: ${MYSQL_DATABASE}
-    container_name: ccy-conversion-data-cn
+    container_name: currency-conversion-data-cn
     networks:
       - currency-bridge
     volumes:
