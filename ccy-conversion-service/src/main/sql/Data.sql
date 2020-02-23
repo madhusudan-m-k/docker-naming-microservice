@@ -20,3 +20,7 @@ values(75, 'USD', 'INR');
 insert into currencyconversionrate
     (exchange_rate, source_currency, target_currency)
 values(50, 'SGD', 'INR');
+
+insert into currencyconversionrate
+    (exchange_rate, source_currency, target_currency)
+values(70, 'EUR', 'INR');
