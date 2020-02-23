@@ -16,6 +16,7 @@ services:
         "-http-port=8761",
         "-ui",
         "-client=0.0.0.0",
+        "-dev",
       ]
 
   currency-conversion-service:
@@ -24,11 +25,11 @@ services:
       dockerfile: Dockerfile
     env_file:
       - .env
-    ports:
-      - "8080:${CCY_CONVERSION_SERVER_PORT}"
+    #ports:
+    #- "8080:${CCY_CONVERSION_SERVER_PORT}"
     environment:
       RDS_HOST_NAME: currency-conversion-db
-    container_name: currency-conversion-service-cn
+    #container_name: currency-conversion-service-cn
     networks:
       - currency-bridge
     depends_on:
